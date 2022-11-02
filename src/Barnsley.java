@@ -17,7 +17,8 @@ public class Barnsley {
     // -------------------------------------------------------------------- //
     // ENVIRONMENT VARIABLES
     // -------------------------------------------------------------------- //
-    int n = Integer.parseInt(args[0]); // first arg is number of points to draw
+    String[] makeme = { "8000" };
+    int n = Integer.parseInt(makeme[0]); // first arg is number of points to draw
     StdDraw.setScale(-0.1, 1.1); // leave a 10% border
     StdDraw.clear(StdDraw.BOOK_LIGHT_BLUE); // set the background colour
     StdDraw.setPenColor(0, 114, 0); // pen should be green in colour
@@ -27,10 +28,10 @@ public class Barnsley {
     double y = 0.0;
 
     // repeat
-    for (int i; i < n; i++) {
+    for (int i = 0; i < n; i++) {
       double tempx;
       double tempy;
-
+      // System.out.println(i);
       // start with a random location of pen
       double r = StdRandom.uniformDouble(0.0, 1.0);
 
@@ -44,6 +45,21 @@ public class Barnsley {
         tempx = 0.2 * x - 0.26 * y + 0.4;
         tempy = 0.23 * x + 0.22 * y - 0.045;
       }
+      // largest right-hand leaflet
+      else if (r <= 0.15) {
+        tempx = -0.15 * x + 0.28 * y + 0.575;
+        tempy = 0.26 * x + 0.24 * y - 0.086;
+      }
+      // successively smaller leaflets
+      else {
+        tempx = 0.85 * x + 0.04 * y + 0.075;
+        tempy = -0.04 * x + 0.85 * y + 0.180;
+      }
+
+      // update (x, y) and draw point
+      x = tempx;
+      y = tempy;
+      StdDraw.point(x, y);
     }
   }
 }
