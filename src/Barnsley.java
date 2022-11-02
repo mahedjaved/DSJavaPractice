@@ -17,8 +17,7 @@ public class Barnsley {
     // -------------------------------------------------------------------- //
     // ENVIRONMENT VARIABLES
     // -------------------------------------------------------------------- //
-    String[] makeme = { "8000" };
-    int n = Integer.parseInt(makeme[0]); // first arg is number of points to draw
+    int n = Integer.parseInt(args[0]); // first arg is number of points to draw
     StdDraw.setScale(-0.1, 1.1); // leave a 10% border
     StdDraw.clear(StdDraw.BOOK_LIGHT_BLUE); // set the background colour
     StdDraw.setPenColor(0, 114, 0); // pen should be green in colour
